@@ -5,3 +5,8 @@ font-size: 18px;
 font-weight: 700;
 text-align: center;
 }
+@media (min-width:768px) {
+    .title{
+     font-size: 26px;
+    }
+}

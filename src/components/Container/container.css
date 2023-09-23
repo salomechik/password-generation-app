@@ -13,11 +13,11 @@
 .character-length {
   color: #e6e5ea;
   font-size: 20px;
-  width: 80%;
+  width: 100%
 }
 .numbers {
   color: #a4ffaf;
-  font-size: 24px;
+  font-size: 34px;
   font-weight: 700;
   background: #24232c;
   border: none;
@@ -48,7 +48,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 input[type="range"]::-webkit-slider-thumb:hover {
   background: #18171f;
-  stroke-width: 2px;
+  border: 2px solid #A4FFAF;
 }
 .boxes {
   display: flex;
@@ -56,14 +56,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-top: 32px;
   row-gap: 16px;
 }
-.box {
+.first-box, .second-box, .third-box, .fourth-box {
   width: 20px;
   height: 20px;
-  background: #24232c;
+  background-color: #24232c;
   border: 2px solid #e6e5ea;
 }
 .box:hover {
-  border: 2px solid #a4ffaf;
+  border: 2px solid #a4ffaf; 
+  background: #18171F;
+
 }
 .first,
 .second,
@@ -83,7 +85,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   padding: 14px;
   width: 100%;
   display: flex;
-  background: #18171f;
+  background-color: #18171f;
   margin-top: 32px;
 }
 .strength {
@@ -110,28 +112,67 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .colored-boxes {
   width: 10px;
   height: 28px;
-  border: 2px solid var(--Almost-White, #e6e5ea);
+  border: 2px solid #e6e5ea;
   background: #24232c;
 }
-.a {
-  background: #f64a4a;
-  border: none;
-}
 .generate-part {
-  margin-top: 32px;
   background: #a4ffaf;
   display: flex;
   padding: 18px 0;
   position: relative;
-}
-.generate {
+  cursor: pointer;
   color: #24232c;
-  display: flex;
-  margin: auto;
   font-size: 16px;
   font-weight: 700;
+  width: 100%;
+  margin-top: 28px;
+  justify-content: center;
+  over
+}
+.generate-part:hover{
+  background-color: #24232C;
+  border: 2px solid #A4FFAF;
+  color: #A4FFAF;
 }
 .icon-arrow{
     position: absolute;
-    margin-left: 215px;
+    left: 210px;
+    top: 22px
+}
+.generate-part:hover .icon-arrow path{
+  fill: #a4ffaf;
+}
+@media (min-width:768px){
+
+  .main{
+    width: 540px;
+  }
+  .character-length{
+    font-size: 22px;
+   position: absolute;
+  }
+  .first-box, .second-box, .third-box, .fourth-box{
+    margin-top: 4px;
+  }
+  .text{
+    font-size: 22px;
+  }
+  .icon-arrow{
+    margin-left: 100px;
+    margin-top: 0px;
+  }
+  .dark-box{
+    height: 72px;
+  }
+  .text-and-scale{
+    display: flex;
+    align-items: center;
+  }
+  .generate-part{
+    margin-bottom: 15px;
+  }
+  .numbers{
+    text-align: right;
+    margin-left: auto;
+  }
 }
