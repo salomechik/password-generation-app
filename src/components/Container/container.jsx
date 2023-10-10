@@ -7,13 +7,8 @@ const data = [
   "Include Numbers",
   "Include Symbols",
 ];
-const info = [
-  "TOO WEAK!",
-  "WEAK",
-  "MEDIUM",
-  "STRONG",
-];
-const Container = ({setPassword}) => {
+const info = ["TOO WEAK!", "WEAK", "MEDIUM", "STRONG"];
+const Container = ({ setPassword }) => {
   const [rangeValue, setRangeValue] = useState(10);
   const [strength, setStrength] = useState(0);
   const [includeUppercase, setIncludeUppercase] = useState(false);
@@ -24,33 +19,32 @@ const Container = ({setPassword}) => {
   const getRandomCharacter = (set) => {
     const randomIndex = Math.floor(Math.random() * set.length);
     return set.charAt(randomIndex);
-  }
-  const generatePassword = () => {
-    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-    const numberChars = '0123456789';
-    const symbolChars = '!@#$%^&*()_+[]{}|;:,.<>?';
-  
-    let validChars = '';
-  
-    if (includeUppercase) validChars += uppercaseChars;
-      if (includeLowercase) validChars += lowercaseChars;
-      if (includeNumbers) validChars += numberChars;
-      if (includeSymbols) validChars += symbolChars;
-  
-      if (validChars === '') {
-        setPassword('Please select at least one option.');
-        return;
-      }
-      let newPassword = '';
-      const passwordLength = 20;
-
-      for (let i = 0; i < passwordLength; i++) {
-        newPassword += getRandomCharacter(validChars);
-      }
-      setPassword(newPassword);
   };
+  const generatePassword = () => {
+    const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+    const numberChars = "0123456789";
+    const symbolChars = "!@#$%^&*()_+[]{}|;:,.<>?";
 
+    let validChars = "";
+
+    if (includeUppercase) validChars += uppercaseChars;
+    if (includeLowercase) validChars += lowercaseChars;
+    if (includeNumbers) validChars += numberChars;
+    if (includeSymbols) validChars += symbolChars;
+
+    if (validChars === "") {
+      setPassword("Please select at least one option.");
+      return;
+    }
+    let newPassword = "";
+    const passwordLength = parseInt(rangeValue);
+
+    for (let i = 0; i < passwordLength; i++) {
+      newPassword += getRandomCharacter(validChars);
+    }
+    setPassword(newPassword);
+  };
 
   const rangeHandler = (e) => {
     setRangeValue(e.target.value);
@@ -62,21 +56,19 @@ const Container = ({setPassword}) => {
     } else {
       setStrength((prev) => prev - 1);
     }
-    console.log(clickedCheckBoxName)
+    console.log(clickedCheckBoxName);
     if (clickedCheckBoxName === "Include Uppercase Letters") {
-      setIncludeUppercase(!includeUppercase)
+      setIncludeUppercase(!includeUppercase);
     } else if (clickedCheckBoxName === "Include Lowercase Letters") {
-      setIncludeLowercase(!includeLowercase)
-    } else if (clickedCheckBoxName ===   "Include Numbers") {
-      setIncludeNumbers(!includeNumbers)
+      setIncludeLowercase(!includeLowercase);
+    } else if (clickedCheckBoxName === "Include Numbers") {
+      setIncludeNumbers(!includeNumbers);
     } else {
-      setIncludeSymbols(!includeSymbols)
+      setIncludeSymbols(!includeSymbols);
     }
   }
 
-  // useEffect(() => {
-  //   console.log(strength);
-  // }, [strength]);
+
 
   return (
     <div className="main">
@@ -85,6 +77,7 @@ const Container = ({setPassword}) => {
         <h1 className="numbers">{rangeValue}</h1>
       </div>
       <input
+       style={{backgroundSize: `${(5*rangeValue)}%`}}
         className="range"
         type="range"
         max={20}
@@ -98,7 +91,7 @@ const Container = ({setPassword}) => {
               <input
                 type="checkbox"
                 className="checkbox"
-                onChange={ (e) => handleChange(e, item)}
+                onChange={(e) => handleChange(e, item)}
               />
               <div className="custom-checkbox"></div>
               <h2 className="text">{item}</h2>
@@ -109,9 +102,7 @@ const Container = ({setPassword}) => {
       <div className="dark-box">
         <h2 className="strength">STRENGTH</h2>
         <div className="text-and-scale">
-          <div className="scale">
-            {info [strength - 1]}
-          </div>
+          <div className="scale">{info[strength - 1]}</div>
           <div
             className={`colored-boxes ${
               strength === 1

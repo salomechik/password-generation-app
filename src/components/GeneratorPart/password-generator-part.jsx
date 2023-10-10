@@ -1,7 +1,7 @@
 import "./password-generator-part.css";
 import copyImg from "../../assets/icon-copy.svg";
 
-const GeneratorPart = ({password}) => {
+const GeneratorPart = ({ password }) => {
   return (
     <div className="generator-background">
       <h1 className="input">{password}</h1>
